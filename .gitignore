@@ -1,5 +1,5 @@
 .idea
 .pytest_cache
 venv
-allure-results
-*/__pycache__
+**/allure-results
+**/__pycache__/
