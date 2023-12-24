@@ -27,7 +27,7 @@ class TestLoginUser:
                f'{{"success":true,"accessToken":"{access_token}","refreshToken":"{refresh_token}",' \
                f'"user":{{"email":"{email}","name":"{name}"}}}}'
 
-    @allure.title('Авторизация с неверным email пользователя ')
+    @allure.title('Авторизация с неверным {email} пользователя ')
     @allure.description('Запрос проверяет авторизацию с несуществующей почтой пользователя, но с корректным паролем')
     @pytest.mark.parametrize('email', ['faker.email()', ' '], ids=['incorrect_email', 'empty_email'])
     def test_login_user_incorrect_email_and_correct_password(self, register_new_user_return_login_and_password,
@@ -42,7 +42,7 @@ class TestLoginUser:
         assert response.status_code == 401 and response.text == \
                '{"success":false,"message":"email or password are incorrect"}'
 
-    @allure.title('Авторизация с неверным email пользователя ')
+    @allure.title('Авторизация с неверным {password} пользователя ')
     @allure.description('Запрос проверяет авторизацию с корренктной почтой пользователя, но с не верным паролем')
     @pytest.mark.parametrize('password', ['faker.password()', ' '], ids=['incorrect password', 'empty password'])
     def test_login_user_correct_email_incorrect_password(self, register_new_user_return_login_and_password, password):
