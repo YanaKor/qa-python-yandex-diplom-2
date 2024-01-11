@@ -1,14 +1,14 @@
+import allure
 import requests
 from faker import Faker
 from endpoints import Url, Endpoints
 from helpers import generate_random_string
 
-
 faker = Faker()
 
 
+@allure.step('Регистрация нового пользователя')
 def register_new_user_and_return_login_password():
-
     login_pass = []
 
     email = faker.email()
